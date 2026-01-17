@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Die 70/30 Regel: AI braucht erfahrene Piloten - Henning Thies</title>
+  <meta name="description" content="AI schreibt 70% des Codes. Du triffst 100% der Entscheidungen. Warum Erfahrung in der AI-Ära mehr wert wird, nicht weniger.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="b28b0abb-0c76-4e96-a913-22277300de45"></script>
+  <style>
+    :root {
+      --color-midnight-navy: #1A2B4A;
+      --color-warm-white: #FAF8F5;
+      --color-electric-coral: #FF6B4A;
+      --color-slate-gray: #64748B;
+      --color-light-stone: #E8E4DE;
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Inter', sans-serif;
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 32px;
+      --space-lg: 64px;
+      --space-xl: 96px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-slate-gray);
+      background: var(--color-warm-white);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--color-warm-white);
+      border-bottom: 1px solid var(--color-light-stone);
+      padding: var(--space-md) 0;
+    }
+    .header-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-midnight-navy);
+      text-decoration: none;
+    }
+    .wordmark .dot { color: var(--color-electric-coral); }
+    .back-link {
+      color: var(--color-slate-gray);
+      text-decoration: none;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    .back-link:hover { color: var(--color-electric-coral); }
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-lg) var(--space-md);
+    }
+    .article-header {
+      margin-bottom: var(--space-lg);
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--color-slate-gray);
+      margin-bottom: var(--space-sm);
+    }
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      line-height: 1.1;
+      color: var(--color-midnight-navy);
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+    .article-subtitle {
+      font-size: 22px;
+      color: var(--color-slate-gray);
+      line-height: 1.5;
+    }
+    .article-content h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--color-midnight-navy);
+      margin: var(--space-lg) 0 var(--space-md);
+      font-weight: 700;
+    }
+    .article-content h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--color-midnight-navy);
+      margin: var(--space-md) 0 var(--space-sm);
+      font-weight: 600;
+    }
+    .article-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+      color: var(--color-slate-gray);
+    }
+    .article-content strong {
+      color: var(--color-midnight-navy);
+      font-weight: 600;
+    }
+    .article-content ul, .article-content ol {
+      margin: 0 0 var(--space-md) var(--space-md);
+    }
+    .article-content li {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: var(--space-xs);
+    }
+    .article-content code {
+      background: var(--color-light-stone);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .article-content pre {
+      background: var(--color-midnight-navy);
+      color: var(--color-warm-white);
+      padding: var(--space-md);
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: var(--space-md);
+    }
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+    .highlight-box {
+      background: var(--color-light-stone);
+      border-left: 4px solid var(--color-electric-coral);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-size: 20px;
+      color: var(--color-midnight-navy);
+    }
+    .cta-box {
+      background: var(--color-midnight-navy);
+      padding: var(--space-lg);
+      border-radius: 12px;
+      text-align: center;
+      margin: var(--space-lg) 0;
+    }
+    .cta-box h3 {
+      font-family: var(--font-display);
+      color: var(--color-warm-white);
+      font-size: 28px;
+      margin-bottom: var(--space-sm);
+    }
+    .cta-box p {
+      color: var(--color-light-stone);
+      margin-bottom: var(--space-md);
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--color-electric-coral);
+      color: var(--color-warm-white);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn:hover {
+      background: #e85a3a;
+      transform: translateY(-2px);
+    }
+    footer {
+      background: var(--color-midnight-navy);
+      color: var(--color-light-stone);
+      padding: var(--space-md);
+      text-align: center;
+      font-size: 14px;
+    }
+    footer a { color: var(--color-electric-coral); }
+    @media (max-width: 768px) {
+      .article-title { font-size: 36px; }
+      .article-content h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="wordmark">henning thies<span class="dot">.</span></a>
+      <a href="/" class="back-link">&larr; Zur&uuml;ck zur Startseite</a>
+    </div>
+  </header>
+
+  <article class="article">
+    <div class="article-header">
+      <div class="article-meta">6 min Lesezeit</div>
+      <h1 class="article-title">Die 70/30 Regel: AI braucht erfahrene Piloten</h1>
+      <p class="article-subtitle">AI schreibt 70% des Codes. Du triffst 100% der Entscheidungen. Warum Erfahrung in der AI-&Auml;ra mehr wert wird, nicht weniger.</p>
+    </div>
+
+    <div class="article-content">
+      <p>Nach 6 Monaten Arbeit an produktionsreifen Rails-Anwendungen mit AI-Unterst&uuml;tzung bin ich bei dem angekommen, was ich die 70/30 Regel nenne:</p>
+
+      <div class="highlight-box">
+        <p><strong>AI erledigt 70% des Codes. Menschen treffen 100% der Entscheidungen.</strong></p>
+      </div>
+
+      <p>Es geht nicht darum, dass AI 70% der "Arbeit" macht. Es geht darum zu verstehen, welche Teile der Software-Entwicklung sicher an AI delegiert werden k&ouml;nnen &ndash; und welche absolut nicht.</p>
+
+      <h2>Die 70%: Was AI exzellent macht</h2>
+
+      <h3>CRUD-Operationen</h3>
+      <p>Controller, Models, Views und Formulare f&uuml;r Standard-Datenoperationen sind AIs St&auml;rke. Beschreibe was du brauchst:</p>
+
+      <p><em>"Erstelle einen RESTful Controller f&uuml;r Projekte mit index, show, new, create, edit, update und destroy Actions. Projekte geh&ouml;ren zu einem Client und haben name, description, status (enum) und due_date."</em></p>
+
+      <p>AI generiert korrekten, idiomatischen Rails-Code sofort. Fr&uuml;her war das 30 Minuten Tippen. Jetzt sind es 2 Minuten Review.</p>
+
+      <h3>Datenbank-Migrationen</h3>
+      <p><em>"F&uuml;ge eine status-Spalte zu projects als Integer mit Default 0 hinzu. F&uuml;ge einen Index auf client_id und status f&uuml;r h&auml;ufige Queries hinzu."</em></p>
+      <p>Perfekt. Jedes Mal.</p>
+
+      <h3>Tests schreiben</h3>
+      <p>Erwartetes Verhalten beschreiben und AI Tests schreiben lassen ist extrem effizient. AI generiert umfassende Tests, die manuell 20 Minuten gedauert h&auml;tten.</p>
+
+      <h3>View Templates, CSS, Dokumentation</h3>
+      <p>ERB-Templates mit Conditionals, Loops und Partials. Tailwind-Styling. README-Dateien und Inline-Kommentare. AI versteht diese Patterns extrem gut.</p>
+
+      <h2>Die 30%: Was Menschen besitzen m&uuml;ssen</h2>
+
+      <h3>Architektur-Entscheidungen</h3>
+      <p>Solltest du verwenden:</p>
+      <ul>
+        <li>Schema-per-Tenant oder Row-Level Security f&uuml;r Multi-Tenancy?</li>
+        <li>REST oder GraphQL?</li>
+        <li>Sidekiq oder Solid Queue?</li>
+        <li>PostgreSQL oder MySQL?</li>
+      </ul>
+
+      <p>AI gibt dir Vor- und Nachteile, aber trifft die Entscheidung nicht basierend auf deinem spezifischen Kontext: Team-Erfahrung, Skalierungsanforderungen, bestehende Infrastruktur, Business-Constraints.</p>
+
+      <p>Ich habe gesehen, wie AI selbstbewusst Patterns empfiehlt, die bei Skalierung scheitern oder Wartungsalbtr&auml;ume verursachen w&uuml;rden. Architektur erfordert Verst&auml;ndnis des gesamten Projektkontexts &ndash; etwas das AI nicht hat.</p>
+
+      <h3>Security Review</h3>
+      <p>AI-generierter Code hat oft Security-Probleme:</p>
+
+<pre><code># AI k&ouml;nnte das generieren
+def show
+  @user = User.find(params[:id])
+end
+
+# Aber es sollte das sein
+def show
+  @user = current_tenant.users.find(params[:id])
+end</code></pre>
+
+      <p>Die erste Version leakt Daten zwischen Tenants. AI versteht dein Autorisierungsmodell nicht, es sei denn du sagst es ihm jedes Mal explizit.</p>
+
+      <p><strong>Jede Controller-Action, jede Query, jede User-Input-Verarbeitung braucht menschliches Security-Review.</strong></p>
+
+      <h3>Business-Logik Validierung</h3>
+      <p>AI kennt dein Business nicht. Es wei&szlig; nicht, dass:</p>
+      <ul>
+        <li>Deutsche Rechnungen spezifische Umsatzsteuer-Berechnungen erfordern</li>
+        <li>Der Workflow deines Kunden einen ungew&ouml;hnlichen Freigabeschritt hat</li>
+        <li>Bestimmte Datenkombinationen unm&ouml;glich sein sollten</li>
+      </ul>
+
+      <p>Als ich den DATEV-Export f&uuml;r Kunden-Cockpit baute, gab AI mir einen Startpunkt. Ich habe dann Stunden damit verbracht, gegen offizielle DATEV-Dokumentation zu validieren &ndash; weil deutsche Buchhaltungsdaten falsch zu haben nicht akzeptabel ist.</p>
+
+      <h3>Performance bei Skalierung</h3>
+      <p>AI optimiert f&uuml;r Korrektheit, nicht Performance. Es denkt nicht dar&uuml;ber nach:</p>
+      <ul>
+        <li>Was passiert wenn diese Tabelle 1 Million Rows hat?</li>
+        <li>Sollte diese Query eager-loaded werden?</li>
+        <li>Braucht das einen Datenbank-Index?</li>
+        <li>Sollte das in einem Background-Job laufen?</li>
+      </ul>
+
+      <p>Ich reviewe jede Datenbank-Query in AI-generiertem Code. N+1 Queries rutschen st&auml;ndig durch.</p>
+
+      <h2>Wie ich die 70/30 Regel anwende</h2>
+
+      <p><strong>Morgens:</strong> Architektur und Planung (100% Mensch). Ich entscheide was gebaut wird und wie.</p>
+
+      <p><strong>Kernarbeitszeit:</strong> Feature-Implementierung (70/30 Mix). AI generiert, ich reviewe und steuere.</p>
+
+      <p><strong>Vor dem Commit:</strong> Security- und Performance-Review (100% Mensch). Jede Zeile AI-Code wird gepr&uuml;ft.</p>
+
+      <p><strong>Vor dem Shipping:</strong> Integration-Tests und UX-Review (100% Mensch). Funktioniert es wirklich? Ist es gut?</p>
+
+      <h2>Der Produktivit&auml;ts-Multiplikator</h2>
+
+      <p>Die 70/30 Regel bedeutet nicht, dass AI 70% der "Arbeit" macht. Es bedeutet, dass AI 70% des Tippens, Suchens und Syntax-Erinnerns eliminiert &ndash; die niedrigwertigen Teile des Programmierens.</p>
+
+      <p>Was bleibt ist die hochwertige Arbeit: entscheiden was gebaut wird, sicherstellen dass es sicher ist, es schnell machen, gute Experiences liefern.</p>
+
+      <div class="highlight-box">
+        <p>Ein Senior-Entwickler mit AI-Unterst&uuml;tzung ist nicht 70% schneller. Er ist <strong>3-5x produktiver</strong>, weil er sich komplett auf die Arbeit konzentrieren kann, die z&auml;hlt.</p>
+      </div>
+
+      <h2>Die Gefahrenzone</h2>
+
+      <p>Wo Entwickler in Schwierigkeiten geraten:</p>
+
+      <ol>
+        <li><strong>AI-Output ohne Review vertrauen.</strong> AI-Code sieht korrekt aus. Ist er oft nicht.</li>
+        <li><strong>AI nach Architektur-Entscheidungen fragen.</strong> Es wird selbstbewusst antworten. Es wird oft falsch liegen.</li>
+        <li><strong>Security-Review &uuml;berspringen.</strong> AI versteht dein Autorisierungsmodell nicht.</li>
+        <li><strong>Annehmen dass AI-generierte Tests ausreichen.</strong> AI testet was du beschreibst, nicht Edge Cases an die du nicht gedacht hast.</li>
+      </ol>
+
+      <p>AI ist ein m&auml;chtiges Werkzeug. Wie alle m&auml;chtigen Werkzeuge erfordert es Skill und Urteilsverm&ouml;gen, um es sicher zu nutzen.</p>
+
+      <div class="cta-box">
+        <h3>Mehr Gedanken zur Zukunft der Software-Entwicklung?</h3>
+        <p>Alle 1-2 Wochen teile ich Einblicke zu AI-gest&uuml;tzter Entwicklung.</p>
+        <a href="/#newsletter" class="btn">Newsletter abonnieren</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 Henning Thies. <a href="https://ai-on-rails.com">AI on Rails</a> | <a href="https://linkedin.com/in/henningthies">LinkedIn</a></p>
+  </footer>
+</body>
+</html>

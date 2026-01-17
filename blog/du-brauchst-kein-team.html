@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Du brauchst kein Team - Henning Thies</title>
+  <meta name="description" content="5 Entwickler, 4 Monate, 80.000 EUR. Oder: 1 Entwickler mit AI, 4 Wochen, 20.000 EUR. Die Rechnung hat sich ge&auml;ndert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="b28b0abb-0c76-4e96-a913-22277300de45"></script>
+  <style>
+    :root {
+      --color-midnight-navy: #1A2B4A;
+      --color-warm-white: #FAF8F5;
+      --color-electric-coral: #FF6B4A;
+      --color-slate-gray: #64748B;
+      --color-light-stone: #E8E4DE;
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Inter', sans-serif;
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 32px;
+      --space-lg: 64px;
+      --space-xl: 96px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-slate-gray);
+      background: var(--color-warm-white);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--color-warm-white);
+      border-bottom: 1px solid var(--color-light-stone);
+      padding: var(--space-md) 0;
+    }
+    .header-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-midnight-navy);
+      text-decoration: none;
+    }
+    .wordmark .dot { color: var(--color-electric-coral); }
+    .back-link {
+      color: var(--color-slate-gray);
+      text-decoration: none;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    .back-link:hover { color: var(--color-electric-coral); }
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-lg) var(--space-md);
+    }
+    .article-header { margin-bottom: var(--space-lg); }
+    .article-meta {
+      font-size: 14px;
+      color: var(--color-slate-gray);
+      margin-bottom: var(--space-sm);
+    }
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      line-height: 1.1;
+      color: var(--color-midnight-navy);
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+    .article-subtitle {
+      font-size: 22px;
+      color: var(--color-slate-gray);
+      line-height: 1.5;
+    }
+    .article-content h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--color-midnight-navy);
+      margin: var(--space-lg) 0 var(--space-md);
+      font-weight: 700;
+    }
+    .article-content h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--color-midnight-navy);
+      margin: var(--space-md) 0 var(--space-sm);
+      font-weight: 600;
+    }
+    .article-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+      color: var(--color-slate-gray);
+    }
+    .article-content strong {
+      color: var(--color-midnight-navy);
+      font-weight: 600;
+    }
+    .article-content ul, .article-content ol {
+      margin: 0 0 var(--space-md) var(--space-md);
+    }
+    .article-content li {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: var(--space-xs);
+    }
+    .highlight-box {
+      background: var(--color-light-stone);
+      border-left: 4px solid var(--color-electric-coral);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .highlight-box p { margin: 0; font-size: 20px; color: var(--color-midnight-navy); }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-md) 0;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: var(--space-sm);
+      text-align: left;
+      border-bottom: 1px solid var(--color-light-stone);
+    }
+    .comparison-table th {
+      font-weight: 600;
+      color: var(--color-midnight-navy);
+      background: var(--color-light-stone);
+    }
+    .comparison-table td { font-size: 16px; }
+    .cta-box {
+      background: var(--color-midnight-navy);
+      padding: var(--space-lg);
+      border-radius: 12px;
+      text-align: center;
+      margin: var(--space-lg) 0;
+    }
+    .cta-box h3 {
+      font-family: var(--font-display);
+      color: var(--color-warm-white);
+      font-size: 28px;
+      margin-bottom: var(--space-sm);
+    }
+    .cta-box p { color: var(--color-light-stone); margin-bottom: var(--space-md); }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--color-electric-coral);
+      color: var(--color-warm-white);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn:hover { background: #e85a3a; transform: translateY(-2px); }
+    footer {
+      background: var(--color-midnight-navy);
+      color: var(--color-light-stone);
+      padding: var(--space-md);
+      text-align: center;
+      font-size: 14px;
+    }
+    footer a { color: var(--color-electric-coral); }
+    @media (max-width: 768px) {
+      .article-title { font-size: 36px; }
+      .article-content h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="wordmark">henning thies<span class="dot">.</span></a>
+      <a href="/" class="back-link">&larr; Zur&uuml;ck zur Startseite</a>
+    </div>
+  </header>
+
+  <article class="article">
+    <div class="article-header">
+      <div class="article-meta">10 min Lesezeit</div>
+      <h1 class="article-title">Du brauchst kein Team</h1>
+      <p class="article-subtitle">5 Entwickler, 4 Monate, 80.000 EUR. Oder: 1 Entwickler mit AI, 4 Wochen, 20.000 EUR. Die Rechnung hat sich ge&auml;ndert.</p>
+    </div>
+
+    <div class="article-content">
+      <p>Als ich Gr&uuml;ndern erz&auml;hle, dass ich ihr MVP in 2-4 Wochen bauen kann, sind sie skeptisch. Ich war es auch, bis ich es tats&auml;chlich gemacht habe.</p>
+
+      <p>Das ist die Geschichte von Kunden-Cockpit, einer kompletten Multi-Tenant SaaS-Anwendung, die ich in 19 Tagen mit AI-Tools und Rails 8 gebaut habe. Keine Landing Page. Kein Prototyp. Eine produktionsreife Anwendung mit Authentication, Multi-Tenancy, Rechnungsstellung, Dokumentenmanagement und DATEV-Integration.</p>
+
+      <h2>Der alte Ansatz</h2>
+
+      <p>Vor zwei Jahren h&auml;tte ich f&uuml;r dieses Projekt ein Team zusammengestellt:</p>
+
+      <table class="comparison-table">
+        <tr>
+          <th>Rolle</th>
+          <th>Dauer</th>
+          <th>Kosten</th>
+        </tr>
+        <tr>
+          <td>Backend-Entwickler</td>
+          <td>3 Monate</td>
+          <td>&euro;24.000</td>
+        </tr>
+        <tr>
+          <td>Frontend-Entwickler</td>
+          <td>3 Monate</td>
+          <td>&euro;24.000</td>
+        </tr>
+        <tr>
+          <td>DevOps (teilzeit)</td>
+          <td>3 Monate</td>
+          <td>&euro;8.000</td>
+        </tr>
+        <tr>
+          <td>Projektmanagement</td>
+          <td>3 Monate</td>
+          <td>&euro;12.000</td>
+        </tr>
+        <tr>
+          <td><strong>Gesamt</strong></td>
+          <td><strong>12-16 Wochen</strong></td>
+          <td><strong>&euro;60.000 - 80.000</strong></td>
+        </tr>
+      </table>
+
+      <p>Dazu kommt: Kommunikations-Overhead, Meetings, unterschiedliche Coding-Styles, Urlaub, Krankheit, Einarbeitung.</p>
+
+      <h2>Der neue Ansatz</h2>
+
+      <table class="comparison-table">
+        <tr>
+          <th>Rolle</th>
+          <th>Dauer</th>
+          <th>Kosten</th>
+        </tr>
+        <tr>
+          <td>Senior Entwickler + AI</td>
+          <td>19 Tage</td>
+          <td>&euro;15.000 - 25.000</td>
+        </tr>
+      </table>
+
+      <div class="highlight-box">
+        <p>Ein erfahrener Entwickler mit AI-Unterst&uuml;tzung liefert die Arbeit eines kleinen Teams &ndash; in einem Bruchteil der Zeit.</p>
+      </div>
+
+      <h2>Was macht den Unterschied?</h2>
+
+      <h3>1. Kein Kommunikations-Overhead</h3>
+      <p>In einem 5-Personen-Team verbringt jeder 20-30% seiner Zeit mit Kommunikation: Meetings, Slack, Code Reviews, Abstimmungen. Bei 5 Leuten sind das 1-1.5 Entwickler-&Auml;quivalente, die nur kommunizieren.</p>
+
+      <p>Als Solo-Entwickler mit AI f&auml;llt das komplett weg. Ich treffe Entscheidungen sofort. Keine Ticket-Erstellung, keine Sprint-Planung, keine Dailys.</p>
+
+      <h3>2. Konsistente Architektur</h3>
+      <p>Wenn 5 Leute Code schreiben, hast du 5 verschiedene Styles. Das f&uuml;hrt zu endlosen Diskussionen &uuml;ber Coding-Standards, Pull-Request-Debatten und Refactoring-Runden.</p>
+
+      <p>Ein Entwickler = ein konsistenter Stil. AI adaptiert sich an meinen Stil, nicht umgekehrt.</p>
+
+      <h3>3. AI eliminiert die Routine</h3>
+      <p>70% meiner Arbeit fr&uuml;her war Boilerplate: Controller erstellen, Views bauen, Migrations schreiben, Tests aufsetzen. AI erledigt das in Sekunden.</p>
+
+      <p>Was bleibt: die 30%, die wirklich z&auml;hlen. Architektur, Security, Business-Logik, UX-Entscheidungen.</p>
+
+      <h3>4. Kein Warten auf andere</h3>
+      <p>In Teams gibt es st&auml;ndig Blocker: "Warte auf das API-Design", "Brauche noch das Datenbank-Schema", "PR ist noch nicht reviewed".</p>
+
+      <p>Als Solo-Entwickler bin ich nie blockiert. Ich entscheide, implementiere, shippe.</p>
+
+      <h2>Die 19 Tage im Detail</h2>
+
+      <h3>Tage 1-3: Fundament</h3>
+      <p>Architektur-Entscheidungen, Projekt-Setup, Multi-Tenancy-Grundlagen. Das sind Entscheidungen, die AI nicht treffen kann &ndash; die mache ich.</p>
+
+      <h3>Tage 4-8: Kern-Features</h3>
+      <p>Client-Management, Projekt-Verwaltung, Rechnungsystem, PDF-Generierung, DATEV-Export. AI generiert den Code, ich reviewe und verfeinere.</p>
+
+      <h3>Tage 9-14: Dashboard und Polish</h3>
+      <p>Charts, Dokument-Upload, User-Rollen, E-Mail-Benachrichtigungen, UI-Feinschliff.</p>
+
+      <h3>Tage 15-19: Produktion</h3>
+      <p>Security-Audit, Performance-Optimierung, Tests, Deployment, Dokumentation.</p>
+
+      <h2>Wann funktioniert das?</h2>
+
+      <p>Der Solo + AI Ansatz funktioniert am besten wenn:</p>
+
+      <ul>
+        <li><strong>Klarer Scope:</strong> Die Anforderungen sind definiert, nicht "wir finden es beim Bauen raus"</li>
+        <li><strong>B2B/SaaS:</strong> Standard-Patterns, keine exotischen Technologie-Anforderungen</li>
+        <li><strong>Erfahrener Entwickler:</strong> 10+ Jahre Erfahrung, um AI-Output zu bewerten</li>
+        <li><strong>Standard-Stack:</strong> Rails, PostgreSQL, Tailwind &ndash; gut verstandene Technologien</li>
+      </ul>
+
+      <p>Er funktioniert weniger gut bei:</p>
+
+      <ul>
+        <li>Consumer-Apps mit extremen Scale-Anforderungen</li>
+        <li>Cutting-Edge ML/AI-Produkten (ironischerweise)</li>
+        <li>Hardware-nahen Systemen</li>
+        <li>Projekten ohne klaren Scope</li>
+      </ul>
+
+      <h2>Die unbequeme Wahrheit</h2>
+
+      <p>Die Software-Industrie wird sich fundamental ver&auml;ndern. Nicht weil AI Entwickler ersetzt &ndash; sondern weil AI die Produktivit&auml;t so dramatisch erh&ouml;ht, dass kleine Teams gro&szlig;e Teams ausstechen.</p>
+
+      <div class="highlight-box">
+        <p>Die Zukunft geh&ouml;rt nicht den gro&szlig;en Teams. Sie geh&ouml;rt den <strong>erfahrenen Einzelk&auml;mpfern mit AI-Superkr&auml;ften</strong>.</p>
+      </div>
+
+      <p>Was bedeutet das f&uuml;r Gr&uuml;nder? Weniger Risiko. Weniger Kapitalbed&auml;rftig. Schnellere Iteration. Direktere Kommunikation.</p>
+
+      <p>Was bedeutet das f&uuml;r Entwickler? Erfahrung wird mehr wert, nicht weniger. Die F&auml;higkeit, AI effektiv zu nutzen, wird zur Kernkompetenz. Und Junior-Positionen werden schwieriger zu finden.</p>
+
+      <h2>Meine Empfehlung</h2>
+
+      <p>Wenn du ein MVP brauchst:</p>
+
+      <ol>
+        <li>Suche einen erfahrenen Senior-Entwickler (10+ Jahre)</li>
+        <li>Pr&uuml;fe, ob er AI-Tools produktiv nutzt</li>
+        <li>Definiere einen klaren Scope</li>
+        <li>Erwarte Lieferung in Wochen, nicht Monaten</li>
+        <li>Zahle fair f&uuml;r die Erfahrung &ndash; es ist trotzdem g&uuml;nstiger als ein Team</li>
+      </ol>
+
+      <div class="cta-box">
+        <h3>MVP in Wochen statt Monaten?</h3>
+        <p>Ich baue produktionsreife Rails-Anwendungen mit AI-Unterst&uuml;tzung. Fester Preis, klarer Scope, schnelle Lieferung.</p>
+        <a href="https://ai-on-rails.com" class="btn">Mehr erfahren auf ai-on-rails.com</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 Henning Thies. <a href="https://ai-on-rails.com">AI on Rails</a> | <a href="https://linkedin.com/in/henningthies">LinkedIn</a></p>
+  </footer>
+</body>
+</html>
