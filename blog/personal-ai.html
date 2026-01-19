@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal AI: Mein Business Operating System mit Claude Code - Henning Thies</title>
+  <meta name="description" content="Wie ich mit PAI den Überblick über mehrere Projekte behalte und Claude Code als persönlichen Assistenten nutze.">
+
+  <link rel="canonical" href="https://henning-thies.de/blog/personal-ai.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://henning-thies.de/blog/personal-ai.html">
+  <meta property="og:title" content="Personal AI: Mein Business Operating System mit Claude Code">
+  <meta property="og:description" content="Wie ich mit PAI den Überblick über mehrere Projekte behalte und Claude Code als persönlichen Assistenten nutze.">
+  <meta property="og:image" content="https://henning-thies.de/blog/og-personal-ai.png">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="b28b0abb-0c76-4e96-a913-22277300de45"></script>
+  <style>
+    :root {
+      --color-midnight-navy: #1A2B4A;
+      --color-warm-white: #FAF8F5;
+      --color-electric-coral: #FF6B4A;
+      --color-slate-gray: #64748B;
+      --color-light-stone: #E8E4DE;
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 32px;
+      --space-lg: 64px;
+      --space-xl: 96px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-slate-gray);
+      background: var(--color-warm-white);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--color-warm-white);
+      border-bottom: 1px solid var(--color-light-stone);
+      padding: var(--space-md) 0;
+    }
+    .header-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-midnight-navy);
+      text-decoration: none;
+    }
+    .wordmark .dot { color: var(--color-electric-coral); }
+    .back-link {
+      color: var(--color-slate-gray);
+      text-decoration: none;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    .back-link:hover { color: var(--color-electric-coral); }
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-lg) var(--space-md);
+    }
+    .article-header { margin-bottom: var(--space-lg); }
+    .article-meta {
+      font-size: 14px;
+      color: var(--color-slate-gray);
+      margin-bottom: var(--space-sm);
+    }
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 44px;
+      line-height: 1.1;
+      color: var(--color-midnight-navy);
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+    .article-subtitle {
+      font-size: 22px;
+      color: var(--color-slate-gray);
+      line-height: 1.5;
+    }
+    .article-content h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--color-midnight-navy);
+      margin: var(--space-lg) 0 var(--space-md);
+      font-weight: 700;
+    }
+    .article-content h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--color-midnight-navy);
+      margin: var(--space-md) 0 var(--space-sm);
+      font-weight: 600;
+    }
+    .article-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+      color: var(--color-slate-gray);
+    }
+    .article-content strong {
+      color: var(--color-midnight-navy);
+      font-weight: 600;
+    }
+    .article-content ul, .article-content ol {
+      margin: 0 0 var(--space-md) var(--space-md);
+    }
+    .article-content li {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: var(--space-xs);
+    }
+    .article-content a {
+      color: var(--color-electric-coral);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+    .highlight-box {
+      background: var(--color-light-stone);
+      border-left: 4px solid var(--color-electric-coral);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .highlight-box p { margin: 0; font-size: 20px; color: var(--color-midnight-navy); }
+    .code-block {
+      background: var(--color-midnight-navy);
+      color: var(--color-warm-white);
+      padding: var(--space-md);
+      border-radius: 8px;
+      margin: var(--space-md) 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .code-block .comment {
+      color: var(--color-slate-gray);
+    }
+    .command-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-md) 0;
+    }
+    .command-table th,
+    .command-table td {
+      padding: var(--space-sm);
+      text-align: left;
+      border-bottom: 1px solid var(--color-light-stone);
+    }
+    .command-table th {
+      color: var(--color-midnight-navy);
+      font-weight: 600;
+    }
+    .command-table code {
+      font-family: var(--font-mono);
+      background: var(--color-light-stone);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      color: var(--color-midnight-navy);
+    }
+    .cta-box {
+      background: var(--color-midnight-navy);
+      padding: var(--space-lg);
+      border-radius: 12px;
+      text-align: center;
+      margin: var(--space-lg) 0;
+    }
+    .cta-box h3 {
+      font-family: var(--font-display);
+      color: var(--color-warm-white);
+      font-size: 28px;
+      margin-bottom: var(--space-sm);
+    }
+    .cta-box p { color: var(--color-light-stone); margin-bottom: var(--space-md); }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--color-electric-coral);
+      color: var(--color-warm-white);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn:hover { background: #e85a3a; transform: translateY(-2px); }
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+    .comparison-box {
+      padding: var(--space-md);
+      border-radius: 8px;
+    }
+    .comparison-box.gray {
+      background: var(--color-light-stone);
+    }
+    .comparison-box.highlight {
+      background: var(--color-midnight-navy);
+      color: var(--color-warm-white);
+    }
+    .comparison-box h4 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: var(--space-sm);
+    }
+    .comparison-box.highlight h4 {
+      color: var(--color-electric-coral);
+    }
+    .comparison-box ul {
+      margin: 0;
+      padding-left: var(--space-md);
+    }
+    .comparison-box li {
+      font-size: 16px;
+      margin-bottom: var(--space-xs);
+    }
+    .comparison-box.highlight li {
+      color: var(--color-light-stone);
+    }
+    footer {
+      background: var(--color-midnight-navy);
+      color: var(--color-light-stone);
+      padding: var(--space-md);
+      text-align: center;
+      font-size: 14px;
+    }
+    footer a { color: var(--color-electric-coral); }
+    @media (max-width: 768px) {
+      .article-title { font-size: 36px; }
+      .article-content h2 { font-size: 28px; }
+      .comparison { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="wordmark">henning thies<span class="dot">.</span></a>
+      <a href="/" class="back-link">&larr; Zur&uuml;ck zur Startseite</a>
+    </div>
+  </header>
+
+  <article class="article">
+    <div class="article-header">
+      <div class="article-meta">10 min Lesezeit</div>
+      <h1 class="article-title">Personal AI: Mein Business Operating System mit Claude Code</h1>
+      <p class="article-subtitle">Wie ich mit PAI den &Uuml;berblick &uuml;ber mehrere Projekte behalte und Claude Code als pers&ouml;nlichen Assistenten nutze.</p>
+    </div>
+
+    <div class="article-content">
+      <p>Als Product Engineer jongliere ich st&auml;ndig mehrere Projekte gleichzeitig. Ein Kundenprojekt hier, ein eigenes Venture dort, dazwischen strategische Entscheidungen f&uuml;r meine Agency.</p>
+
+      <p>Das Problem: <strong>Claude Code startet jede Session bei Null.</strong> Es wei&szlig; nicht, woran ich gestern gearbeitet habe. Welche Entscheidung ich letzte Woche f&uuml;r Projekt X getroffen habe. Was meine Priorit&auml;ten f&uuml;r diesen Monat sind.</p>
+
+      <p>Also habe ich mir ein System gebaut.</p>
+
+      <h2>Das Kontext-Problem</h2>
+
+      <p>Je mehr Verantwortung du &uuml;bernimmst, desto mehr Kontext brauchst du.</p>
+
+      <p>Als reiner Entwickler reicht der Code. Du bekommst ein Ticket, du l&ouml;st es, fertig.</p>
+
+      <p>Als Product Engineer sieht das anders aus:</p>
+
+      <ul>
+        <li>Du musst wissen, warum Feature X Priorit&auml;t hat</li>
+        <li>Du erinnerst dich an die Diskussion von vor drei Wochen</li>
+        <li>Du siehst das gro&szlig;e Bild &uuml;ber mehrere Projekte hinweg</li>
+        <li>Du triffst Entscheidungen, die auf fr&uuml;heren Entscheidungen aufbauen</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>Diesen Kontext im Kopf zu behalten ist unm&ouml;glich. Und Claude Code kann dir nicht helfen, wenn es deinen Kontext nicht kennt.</p>
+      </div>
+
+      <h2>Die L&ouml;sung: PAI</h2>
+
+      <p>PAI steht f&uuml;r Personal AI. Es ist kein Tool, keine App &ndash; es ist eine Ordnerstruktur mit Markdown-Files, die Claude Code Kontext gibt. Mein Notizbuch digital mit Claude Code als Partner.</p>
+
+      <div class="code-block">
+~/pai/<br>
+├── CLAUDE.md &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"># Wer ich bin, wie ich arbeite</span><br>
+├── daily/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"># T&auml;gliche Logs</span><br>
+├── knowledge/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"># Entscheidungen, Learnings</span><br>
+├── goals/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"># Meine Ziele</span><br>
+└── business/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── pipeline/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"># Aktive Projekte</span>
+      </div>
+
+      <p>Wenn ich Claude Code in diesem Ordner starte, wei&szlig; es sofort:</p>
+
+      <ul>
+        <li>Wer ich bin und was ich mache</li>
+        <li>An welchen Projekten ich arbeite</li>
+        <li>Was meine aktuellen Priorit&auml;ten sind</li>
+        <li>Wie ich kommunizieren m&ouml;chte</li>
+      </ul>
+
+      <h2>Wie ich mehrere Projekte manage</h2>
+
+      <h3>1. Ein zentraler Ort f&uuml;r Kontext</h3>
+
+      <p>In <code>business/pipeline/projects.md</code> liste ich alle aktiven Projekte:</p>
+
+      <div class="code-block">
+## Aktive Projekte<br><br>
+### Kunde A - Dashboard Redesign<br>
+- Status: In Entwicklung<br>
+- Deadline: Ende Januar<br>
+- Kontext: ~/dev/kunde-a/<br><br>
+### Kunden-Cockpit (eigenes Venture)<br>
+- Status: Live, Maintenance<br>
+- Kontext: ~/dev/kunden-cockpit/<br><br>
+### AI on Rails (Agency)<br>
+- Status: Content-Aufbau<br>
+- Fokus: LinkedIn, Blog
+      </div>
+
+      <p>Claude sieht das und kann mir helfen, Priorit&auml;ten zu setzen.</p>
+
+      <h3>2. T&auml;gliche Standups</h3>
+
+      <p>Jeden Morgen starte ich mit <code>/pai:standup</code>. Claude:</p>
+
+      <ul>
+        <li>Liest meine letzten Daily Logs</li>
+        <li>Checkt meine Ziele</li>
+        <li>Schaut auf die Pipeline</li>
+        <li>Fragt: "Was steht heute an?"</li>
+      </ul>
+
+      <p>Das dauert 5 Minuten und gibt mir Klarheit f&uuml;r den Tag.</p>
+
+      <h3>3. Entscheidungen dokumentieren</h3>
+
+      <p>Wenn ich eine wichtige Entscheidung treffe, landet sie in <code>knowledge/decisions/</code>:</p>
+
+      <div class="code-block">
+# 2026-01-15: Tech-Stack f&uuml;r Projekt X<br><br>
+**Kontext:** Kunde will schnelle Iteration<br>
+**Entscheidung:** Rails + Hotwire statt SPA<br>
+**Begr&uuml;ndung:** Weniger Komplexit&auml;t, schnellere Lieferung
+      </div>
+
+      <p>Drei Wochen sp&auml;ter, wenn ich mich frage "Warum haben wir das nochmal so gemacht?" &ndash; Claude kann es mir sagen.</p>
+
+      <h3>4. Projekt-Kontext wechseln</h3>
+
+      <p>Wenn ich an einem spezifischen Projekt arbeite, wechsle ich in dessen Ordner:</p>
+
+      <div class="code-block">
+cd ~/dev/kunde-a<br>
+claude
+      </div>
+
+      <p>Dort gibt es eine eigene CLAUDE.md mit projekt-spezifischem Kontext. Claude kennt dann:</p>
+
+      <ul>
+        <li>Die Architektur dieses Projekts</li>
+        <li>Offene Tasks</li>
+        <li>Projekt-spezifische Konventionen</li>
+      </ul>
+
+      <p><strong>PAI (in ~/pai) ist das Dach. Die einzelnen Projekte haben ihren eigenen Kontext.</strong></p>
+
+      <h2>Die wichtigsten Commands</h2>
+
+      <p>PAI nutzt Claude Code Commands &ndash; das sind vordefinierte Prompts f&uuml;r wiederkehrende Aufgaben:</p>
+
+      <table class="command-table">
+        <tr>
+          <th>Command</th>
+          <th>Was es tut</th>
+        </tr>
+        <tr>
+          <td><code>/pai:standup</code></td>
+          <td>T&auml;glicher Review, Planung</td>
+        </tr>
+        <tr>
+          <td><code>/pai:coach</code></td>
+          <td>Strategische Fragen durchdenken</td>
+        </tr>
+        <tr>
+          <td><code>/pai:capture</code></td>
+          <td>Quick Note erfassen</td>
+        </tr>
+        <tr>
+          <td><code>/pai:process</code></td>
+          <td>Gesammelte Notes verarbeiten</td>
+        </tr>
+        <tr>
+          <td><code>/pai:write</code></td>
+          <td>Content schreiben</td>
+        </tr>
+        <tr>
+          <td><code>/pai:sync</code></td>
+          <td>Alles committen und pushen</td>
+        </tr>
+      </table>
+
+      <p>Diese Commands sind keine Magie. Es sind Markdown-Files mit Prompts, die Claude sagen, was es tun soll.</p>
+
+      <h2>Von AI-Tool zu AI-Partner</h2>
+
+      <p>Der Unterschied zwischen "Claude Code nutzen" und "Claude Code als Partner haben":</p>
+
+      <div class="comparison">
+        <div class="comparison-box gray">
+          <h4>Als Tool</h4>
+          <ul>
+            <li>Du fragst, Claude antwortet</li>
+            <li>Jede Session ist isoliert</li>
+            <li>Du musst Kontext immer wieder erkl&auml;ren</li>
+          </ul>
+        </div>
+        <div class="comparison-box highlight">
+          <h4>Als Partner</h4>
+          <ul>
+            <li>Claude kennt dich</li>
+            <li>Erinnert an offene Punkte</li>
+            <li>Erkennt Muster &uuml;ber Wochen</li>
+            <li>H&auml;lt dich accountable</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Das zweite erfordert ein System. PAI ist meins.</p>
+
+      <h2>F&uuml;r wen ist das?</h2>
+
+      <p>PAI ist nicht f&uuml;r jeden. Es ist f&uuml;r:</p>
+
+      <ul>
+        <li><strong>Product Engineers</strong> die mehrere Projekte jonglieren</li>
+        <li><strong>Freelancer/Consultants</strong> mit verschiedenen Kunden</li>
+        <li><strong>Gr&uuml;nder</strong> die Business + Produkt + Entwicklung unter einem Hut haben</li>
+        <li><strong>Jeden</strong> der Claude Code f&uuml;r mehr als nur Code nutzen will</li>
+      </ul>
+
+      <p>Wenn du nur an einem Projekt arbeitest und rein Code schreibst, brauchst du das wahrscheinlich nicht.</p>
+
+      <div class="cta-box">
+        <h3>PAI ausprobieren</h3>
+        <p>Ich habe PAI als Template ver&ouml;ffentlicht. Du kannst es herunterladen, anpassen und f&uuml;r dich nutzen. Das Setup dauert 10 Minuten.</p>
+        <a href="https://personal.ai-on-rails.com" class="btn" target="_blank">PAI Template herunterladen</a>
+      </div>
+
+      <h2>Fazit</h2>
+
+      <p>Das Ged&auml;chtnis-Problem von Claude Code ist real. Aber es ist l&ouml;sbar.</p>
+
+      <p>Die L&ouml;sung ist nicht ein besseres Tool &ndash; sondern ein System, das Claude Kontext gibt.</p>
+
+      <p><strong>PAI ist mein System. Vielleicht wird es auch deins.</strong></p>
+
+      <p style="margin-top: var(--space-lg); font-style: italic; color: var(--color-slate-gray);">Fragen? Schreib mir auf <a href="https://linkedin.com/in/henningthies">LinkedIn</a>.</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 Henning Thies. <a href="https://ai-on-rails.com">AI on Rails</a> | <a href="https://linkedin.com/in/henningthies">LinkedIn</a></p>
+  </footer>
+</body>
+</html>
